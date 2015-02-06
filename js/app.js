@@ -15,6 +15,7 @@
 
       var onServiceDiscovered = function(service) {
         var serviceNode = document.createElement('li');
+        serviceNode.id = service.id;
         serviceNode.textContent = service.name + ':' + service.type;
 
         if (service instanceof BluetoothService) {
@@ -24,10 +25,25 @@
         }
       };
 
+      var onServiceLost = function(service) {
+        var serviceNode = document.getElementById(service.id);
+
+        if (serviceNode) {
+          serviceNode.remove();
+        }
+      };
+
       discoveries.forEach((discovery) => {
         if (discovery.isAvailable()) {
           discovery.on('service-found', onServiceDiscovered);
+          discovery.on('service-lost', onServiceLost);
           discovery.startDiscovery();
+        } else {
+          discovery.on('available', () => {
+            discovery.on('service-found', onServiceDiscovered);
+            discovery.on('service-lost', onServiceLost);
+            discovery.startDiscovery();
+          });
         }
       });
     });
