@@ -1,0 +1,29 @@
+{
+  "name": "Discovery",
+  "description": "Gaia Discovery",
+  "type": "certified",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "P2P Team",
+    "url": "https://github.com/p2p-web/service-discovery"
+  },
+  "permissions": {
+    "wifi-manage":{},
+    "tcp-socket": {},
+    "udp-socket": {},
+    "bluetooth": {}
+  },
+  "locales": {
+    "en-US": {
+      "name": "Discovery",
+      "description": "Gaia Discovery"
+    }
+  },
+  "default_locale": "en-US",
+  "icons": {
+    "16": "/img/icons/icon16x16.png",
+    "48": "/img/icons/icon48x48.png",
+    "60": "/img/icons/icon60x60.png",
+    "128": "/img/icons/icon128x128.png"
+  }
+}
